@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>今天也要认真生活呀 ✨</title>
+  <style>
+    :root {
+      --pink: #ff6b70;
+      --light-pink: #ffe8e5;
+      --cream: #fffaf3;
+      --ink: #3b302d;
+      --muted: #8c7d77;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 15%, #ffe9d8 0 5px, transparent 6px),
+        radial-gradient(circle at 90% 30%, #ffd9d6 0 7px, transparent 8px),
+        var(--cream);
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(100% - 36px, 980px);
+      margin: 0 auto;
+    }
+
+    header {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: var(--pink);
+    }
+
+    nav {
+      display: flex;
+      gap: 26px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: var(--pink);
+    }
+
+    .hero {
+      min-height: 480px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 32px;
+      padding: 34px 0 55px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 30px;
+      color: #d95057;
+      background: var(--light-pink);
+      font-size: 13px;
+      font-weight: 700;
+      transform: rotate(-2deg);
+    }
+
+    h1 {
+      margin: 22px 0 16px;
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 1.15;
+      letter-spacing: -2px;
+    }
+
+    h1 em {
+      color: var(--pink);
+      font-style: normal;
+    }
+
+    .intro {
+      max-width: 460px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 21px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button.primary {
+      color: white;
+      background: var(--pink);
+      box-shadow: 0 8px 18px #ff6b7040;
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: white;
+      border: 1px solid #f0e6dc;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 310px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      border: 7px solid white;
+      border-radius: 32px;
+      background:
+        linear-gradient(180deg, #ffcfbd00 25%, #774a3eaa 100%),
+        linear-gradient(135deg, #ffc6a8, #f98d8e 55%, #f6c96f);
+      box-shadow: 0 18px 45px #7e4c351a;
+      transform: rotate(2deg);
+    }
+
+    .hero-card::before {
+      content: "☁️";
+      position: absolute;
+      top: 30px;
+      left: 32px;
+      font-size: 46px;
+    }
+
+    .hero-card::after {
+      content: "✿";
+      position: absolute;
+      top: 85px;
+      right: 42px;
+      color: white;
+      font-size: 54px;
+      transform: rotate(18deg);
+    }
+
+    .card-note {
+      position: relative;
+      z-index: 1;
+      color: white;
+    }
+
+    .card-note strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 25px;
+    }
+
+    .card-note span {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .section-title {
+      margin: 12px 0 23px;
+      text-align: center;
+      font-size: 26px;
+    }
+
+    .section-title span {
+      color: var(--pink);
+    }
+
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      padding-bottom: 70px;
+    }
+
+    .post {
+      padding: 23px;
+      border: 1px solid #f1e9e1;
+      border-radius: 22px;
+      background: #fff;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .post:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px #704c3012;
+    }
+
+    .emoji {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--light-pink);
+      font-size: 24px;
+    }
+
+    .post h3 {
+      margin: 17px 0 8px;
+      font-size: 17px;
+    }
+
+    .post p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    footer {
+      padding: 22px 0 32px;
+      border-top: 1px solid #f0e6dc;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 680px) {
+      header {
+        height: 66px;
+      }
+
+      nav {
+        gap: 14px;
+        font-size: 12px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 28px;
+      }
+
+      .hero-card {
+        min-height: 250px;
+      }
+
+      .posts {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="logo" href="#">小小日常<span> ✿</span></a>
+      <nav>
+        <a href="#about">关于我</a>
+        <a href="#notes">最近在写</a>
+        <a href="mailto:hello@example.com">找我玩</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="about">
+        <div>
+          <span class="tag">生活碎片收集员 📮</span>
+          <h1>把普通日子<br />过得<em>亮晶晶</em> ✨</h1>
+          <p class="intro">
+            嗨，我是小满。这里记录一点日常灵感、好吃好逛，
+            还有那些“今天也有好好生活”的小瞬间。
+          </p>
+          <div class="buttons">
+            <a class="button primary" href="#notes">来逛逛我的博客 →</a>
+            <a class="button secondary" href="mailto:hello@example.com">和我打个招呼</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="card-note">
+            <strong>今天也要开心呀！</strong>
+            <span>收集生活里的小确幸 ☀️</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="notes">
+        <h2 class="section-title">最近在写 <span>♡</span></h2>
+        <div class="posts">
+          <article class="post">
+            <div class="emoji">☕</div>
+            <h3>周末咖啡馆巡游记</h3>
+            <p>找到一家适合发呆的小店，顺便喝到了超好喝的拿铁。</p>
+          </article>
+
+          <article class="post">
+            <div class="emoji">🌷</div>
+            <h3>给房间加一点春天气</h3>
+            <p>几枝鲜花、一个小摆件，让回家这件事变得更开心。</p>
+          </article>
+
+          <article class="post">
+            <div class="emoji">📷</div>
+            <h3>最近喜欢的生活碎片</h3>
+            <p>阳光、散步和路边的小猫，平平常常也值得被记下来。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      用一点点喜欢，认真过每一天 ♡
+    </footer>
+  </div>
+</body>
+</html>
